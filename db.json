@@ -1,0 +1,52 @@
+{
+  "menu": [
+    {
+      "id": "1",
+      "title": "Classic Burger",
+      "price": 120,
+      "description": "A classic beef burger with cheese",
+      "category": "burger",
+      "image": "Hero-burger.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Classic Burger",
+      "price": 120,
+      "description": "A classic beef burger with cheese",
+      "category": "burger",
+      "image": "Hero-burger.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Classic Burger",
+      "price": 120,
+      "description": "A classic beef burger with cheese",
+      "category": "burger",
+      "image": "Hero-burger.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Classic Burger",
+      "price": 120,
+      "description": "A classic beef burger with cheese",
+      "category": "burger",
+      "image": "Hero-burger.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Classic Burger",
+      "price": 120,
+      "description": "A classic beef burger with cheese",
+      "category": "burger",
+      "image": "Hero-burger.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Classic Burger",
+      "price": 120,
+      "description": "A classic beef burger with cheese",
+      "category": "burger",
+      "image": "Hero-burger.jpg"
+    }
+  ]
+}
