@@ -1,0 +1,67 @@
+{
+  "menu": [
+    {
+      "id": "1",
+      "title": "Cheese Burger",
+      "price": 110,
+      "description": "A classic beef burger with cheese",
+      "category": "burger",
+      "image": "cheeseburger.jpg",
+      "popularity": 3111
+    },
+    {
+      "id": "2",
+      "title": "Beet Burger",
+      "price": 110,
+      "description": "A burger with a vegetarian twist",
+      "category": "burger",
+      "image": "beet-burger.jpg",
+      "popularity": 1111
+    },
+    {
+      "id": "3",
+      "title": "Prosciutto Burger",
+      "price": 120,
+      "description": "A twist on a classic bacon burger",
+      "category": "burger",
+      "image": "prosciutto-burger.jpg",
+      "popularity": 2111
+    },
+    {
+      "id": "4",
+      "title": "Double bacon combo",
+      "price": 200,
+      "description": "Double up on bacony goodness",
+      "category": "combo",
+      "image": "double-bacon.jpg",
+      "popularity": 1511
+    },
+    {
+      "id": "5",
+      "title": "Fried chicken",
+      "price": 100,
+      "description": "Fingerlickin' good",
+      "category": "sides",
+      "image": "fried-chicken.jpg",
+      "popularity": 3111
+    },
+    {
+      "id": "6",
+      "title": "Chocolate bomb",
+      "price": 70,
+      "description": "Our very own drone delivered chocolate milkshake",
+      "category": "dessert",
+      "image": "chocolate-milkshake.jpg",
+      "popularity": 1111
+    },
+    {
+      "id": "7",
+      "title": "Soda",
+      "price": 45,
+      "description": "Promised to not be shaken or stirred",
+      "category": "drinks",
+      "image": "drink.jpg",
+      "popularity": 1111
+    }
+  ]
+}

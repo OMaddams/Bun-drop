@@ -1,13 +1,19 @@
 import logo from "./logo.svg";
+import "./reset.css";
 import "./App.css";
+
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Header from "./Components/Header";
 import Home from "./Pages/Home";
 import Menu from "./Pages/Menu";
 import Cart from "./Pages/Cart";
+import { useState, createContext, useContext } from "react";
+const CartContext = createContext(null);
 function App() {
+  const [cart, setCart] = useState([]);
+
   return (
-    <>
+    <CartContext.Provider value={cart}>
       <Router>
         <Header />
         <Routes>
@@ -16,7 +22,7 @@ function App() {
           <Route exact path="/cart" element={<Cart />} />
         </Routes>
       </Router>
-    </>
+    </CartContext.Provider>
   );
 }
 
