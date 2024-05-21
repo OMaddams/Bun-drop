@@ -4,6 +4,7 @@ import MenuItem from "../Components/MenuItem";
 import MobilebuttonLarge from "../Components/MobileButtonLarge";
 import { useFetch } from "../Hooks/useFetch";
 import { Link } from "react-router-dom";
+import ShowcaseItem from "../Components/ShowcaseItem";
 const Home = () => {
   const { data, isPending, error } = useFetch("http://localhost:3000/menu");
   if (error) {
@@ -18,13 +19,12 @@ const Home = () => {
         </div>
       </div>
       <div className="showcase-container">
-        <h1 style={{ color: "white", fontSize: "larger" }}>
-          Our most popular options!
-        </h1>
+        <h2 className="h2-w">Our most popular options!</h2>
         <div className="showcase">
           {isPending && <div>Loading....</div>}
           {error && <div>{error}</div>}
-          {data && data.map((item) => <MenuItem key={item.id} data={item} />)}
+          {data &&
+            data.map((item) => <ShowcaseItem key={item.id} data={item} />)}
         </div>
       </div>
     </>

@@ -1,6 +1,9 @@
 * {
   text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
 }
+
 .App {
   text-align: center;
 }
@@ -46,10 +49,21 @@ body {
   background-color: #262626;
 }
 
+.h2-w {
+  font-family: "Oswald", sans-serif;
+  margin: 25px;
+  font-size: xx-large;
+  color: white;
+  text-align: center;
+}
+
 .mobile-button {
   width: 64px;
   height: 64px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media only screen and (min-width: 600px) {
   .mobile-button {
@@ -84,16 +98,17 @@ body {
 
 .logo-text {
   font-size: x-large;
-  font-family: "Roboto", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 400;
   margin-left: 10px;
 }
 .header-container {
   background-color: #ffa07a;
-  height: 80px;
+  min-height: 80px;
   border-radius: 0 0 10px 10px;
   text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   position: fixed;
@@ -102,6 +117,27 @@ body {
   box-shadow: 3px 10px 14px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 3px 10px 14px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 3px 10px 14px 0px rgba(0, 0, 0, 0.75);
+  margin-bottom: 10vh;
+}
+.header-default {
+  text-align: center;
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+}
+.burger-menu-container {
+  width: 100%;
+}
+.burger-menu-item {
+  font-size: larger;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  margin: 5px;
+  border-bottom: #262626 1px solid;
+  width: 100%;
 }
 
 .hero-container {
@@ -153,17 +189,46 @@ body {
   max-width: 100vw;
   flex-wrap: wrap;
 }
-.menu-item {
+.showcase-item {
   width: 157px;
   height: 157px;
   margin: 10px;
   /* border: 1px solid red; */
   border-radius: 15px;
 }
-
-.menu-img {
+.showcase-item-img {
   width: 157px;
   height: 157px;
   object-fit: cover;
   border-radius: 15px;
+}
+.menu-item {
+  width: 90vw;
+  height: 10vh;
+  margin: 10px;
+  /* border: 1px solid red; */
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  border-bottom: white solid 1px;
+  justify-content: space-between;
+  color: white;
+}
+
+.menu-img {
+  width: 30vw;
+  height: 10vh;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.menu {
+  margin-top: 10vh;
+}
+
+.menu-filters-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid white;
 }

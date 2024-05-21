@@ -6,6 +6,7 @@ function MenuItem({ data }) {
         src={`${process.env.PUBLIC_URL}/img/${data.image}`}
       ></img>
       <p>{data.title}</p>
+      <p>{data.price} :-</p>
     </div>
   );
 }
