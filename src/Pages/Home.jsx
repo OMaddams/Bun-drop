@@ -7,6 +7,16 @@ import { Link } from "react-router-dom";
 import ShowcaseItem from "../Components/ShowcaseItem";
 const Home = () => {
   const { data, isPending, error } = useFetch("http://localhost:3000/menu");
+
+  function getTop6() {
+    if (!data) return [];
+
+    let sortedMenu = data;
+    sortedMenu.sort((a, b) => b.popularity - a.popularity);
+    console.log(sortedMenu);
+    let topFive = sortedMenu.slice(0, 6);
+    return topFive;
+  }
   if (error) {
     console.log(error);
   }
@@ -24,7 +34,7 @@ const Home = () => {
           {isPending && <div>Loading....</div>}
           {error && <div>{error}</div>}
           {data &&
-            data.map((item) => <ShowcaseItem key={item.id} data={item} />)}
+            getTop6().map((item) => <ShowcaseItem key={item.id} data={item} />)}
         </div>
       </div>
     </>
