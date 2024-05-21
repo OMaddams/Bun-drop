@@ -1,7 +1,12 @@
+import LogoColor from "../Assets/logo-color.png";
+import MobilebuttonLarge from "../Components/MobileButtonLarge";
 const Home = () => {
   return (
     <>
-      <h1>This is home</h1>
+      <div className="hero-container">
+        <img src={LogoColor} />
+        <MobilebuttonLarge text={"Menu"} />
+      </div>
     </>
   );
 };

@@ -1,7 +1,10 @@
+import MobileButton from "./MobileButton";
+import HamburgerMenu from "../Assets/burger.png";
 function Header() {
   return (
-    <div>
-      <h1>HEADER</h1>
+    <div className="header-container">
+      <h1 className="logo-text">Bun drop</h1>
+      <MobileButton img={HamburgerMenu} />
     </div>
   );
 }

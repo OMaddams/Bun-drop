@@ -36,3 +36,78 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: #262626;
+}
+
+.mobile-button {
+  width: 64px;
+  height: 64px;
+  border: 1px solid red;
+}
+@media only screen and (min-width: 600px) {
+  .mobile-button {
+    display: none;
+  }
+}
+
+.mobile-button-img {
+  width: 64px;
+  height: 64px;
+  object-fit: fill;
+}
+
+.mobile-button-large {
+  border-radius: 25px;
+  height: 40px;
+  background-color: #ffa07a;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: x-large;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  margin-left: 10px;
+}
+.header-container {
+  background-color: #ffa07a;
+  height: 80px;
+  border-radius: 0 0 10px 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.hero-container {
+  height: 90vh;
+  background: center contain;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.hero-container::before {
+  content: "";
+
+  background-position: center;
+  background-image: url(./Assets/Hero-burger.jpg);
+  position: absolute;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  opacity: 0.2;
+}
