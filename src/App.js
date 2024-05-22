@@ -12,7 +12,15 @@ import MenuDetails from "./Pages/MenuDetails";
 import MobileCart from "./Components/MobileCart";
 export const CartContext = createContext();
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([
+    {
+      id: 1,
+      name: "Cheeseburger",
+      price: 110,
+      count: 2,
+    },
+    { id: 2, name: "Prosciutto Burger", price: 120, count: 3 },
+  ]);
 
   return (
     <CartContext.Provider value={cart}>
