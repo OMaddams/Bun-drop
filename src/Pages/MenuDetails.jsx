@@ -14,13 +14,24 @@ function MenuDetails() {
     console.log(error);
   }
 
+  function displayData() {
+    return (
+      <>
+        <img
+          className="menu-details-image"
+          src={`${process.env.PUBLIC_URL}/img/${data.image}`}
+        />
+        <h2>{data.title}</h2>
+      </>
+    );
+  }
+
   return (
-    <>
-      <p>test</p>
+    <div className="menu-details">
       {isPending && <div>Loading....</div>}
       {error && <div>{error}</div>}
-      {data && <p>{data.title}</p>}
-    </>
+      {data && displayData()}
+    </div>
   );
 }
 

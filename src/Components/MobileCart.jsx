@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { CartContext } from "../App";
 import MobileCartItem from "./MobileCartItem";
 function MobileCart() {
-  const cart = useContext(CartContext);
+  const { cart } = useContext(CartContext);
   const [expanded, setExpanded] = useState(false);
   const toggleCart = () => {
     setExpanded(!expanded);

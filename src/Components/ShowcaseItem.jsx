@@ -24,7 +24,7 @@ function ShowcaseItem({ data }) {
         src={`${process.env.PUBLIC_URL}/img/${data.image}`}
       ></img>
       <div className={`showcase-item-text ${hide}`}>
-        <p>{data.title}</p>
+        <p style={{ margin: "5px" }}>{data.title}</p>
       </div>
     </div>
   );
