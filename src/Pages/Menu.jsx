@@ -3,6 +3,7 @@ import HamburgerMenu from "../Assets/hamburger-menu.png";
 import { useState } from "react";
 import { useFetch } from "../Hooks/useFetch";
 import MenuItem from "../Components/MenuItem";
+import { Link } from "react-router-dom";
 const Menu = () => {
   const [filteredMenu, setFilteredMenu] = useState(null);
   const [activeFilter, setActiveFilter] = useState(null);
@@ -36,7 +37,9 @@ const Menu = () => {
       {error && <div>{error}</div>}
       {data &&
         (filteredMenu || data).map((item) => (
-          <MenuItem key={item.id} data={item} />
+          <Link to={`/menu/${item.id}`} key={item.id}>
+            <MenuItem data={item} />
+          </Link>
         ))}
     </div>
   );

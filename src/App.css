@@ -244,7 +244,7 @@ body {
 }
 
 .menu {
-  margin-top: 10vh;
+  margin: 10vh 0 12vh;
 }
 
 .menu-filters-container {
@@ -252,4 +252,35 @@ body {
   display: flex;
   justify-content: space-around;
   border-bottom: 1px solid white;
+}
+
+.mobile-cart {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: #ffa07a;
+  border-radius: 100px;
+  width: 64px;
+  height: 64px;
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mobile-cart-expanded {
+  position: fixed;
+  border-radius: 15px;
+  background-color: #ffa07a;
+  top: 20%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and(min-width:600px) {
+  .mobile-cart {
+    display: none;
+  }
 }
