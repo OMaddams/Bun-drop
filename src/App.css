@@ -20,6 +20,13 @@ h6 {
 a {
   color: inherit;
 }
+p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+.text-center {
+  text-align: center;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -253,7 +260,9 @@ body {
   justify-content: space-between;
   color: white;
 }
-
+.menu-item-text {
+  max-width: 40%;
+}
 .menu-img {
   width: 30vw;
   height: 10vh;

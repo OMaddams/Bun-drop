@@ -11,8 +11,8 @@ function MenuItem({ data, goTo }) {
   }
   function handleChange(e) {
     let count = e.target.value;
-    count > 20 ? (count = 20) : (count = count);
-    count < 0 ? (count = 0) : (count = count);
+    if (count > 20) count = 20;
+    if (count < 0) count = 0;
     setCount(count);
   }
   function handleSumbit(e) {
@@ -59,8 +59,8 @@ function MenuItem({ data, goTo }) {
           className="menu-img"
           src={`${process.env.PUBLIC_URL}/img/${data.image}`}
         ></img>
-        <p>{data.title}</p>
-        <p>{data.price} :-</p>
+        <p className="text-center menu-item-text">{data.title}</p>
+        <p>{data.price}:-</p>
       </div>
     );
   }
