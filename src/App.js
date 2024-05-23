@@ -7,6 +7,7 @@ import Header from "./Components/Header";
 import Home from "./Pages/Home";
 import Menu from "./Pages/Menu";
 import Cart from "./Pages/Cart";
+import Checkout from "./Pages/Checkout";
 import { useState, createContext, useContext } from "react";
 import MenuDetails from "./Pages/MenuDetails";
 import MobileCart from "./Components/MobileCart";
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/menu" element={<Menu />} />
           <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/checkout" element={<Checkout />} />
           <Route path="/menu/:menuId" element={<MenuDetails />} />
         </Routes>
         <MobileCart />
