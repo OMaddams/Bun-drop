@@ -3,10 +3,12 @@ import HamburgerMenu from "../Assets/hamburger-menu.png";
 import { useState } from "react";
 import { useFetch } from "../Hooks/useFetch";
 import MenuItem from "../Components/MenuItem";
+import { Link, useNavigate } from "react-router-dom";
 const Menu = () => {
   const [filteredMenu, setFilteredMenu] = useState(null);
   const [activeFilter, setActiveFilter] = useState(null);
   const { data, isPending, error } = useFetch("http://localhost:3000/menu");
+  const navigate = useNavigate();
   if (error) {
     console.log(error);
   }
@@ -23,6 +25,9 @@ const Menu = () => {
       setActiveFilter(category);
     }
   };
+  const goToDetails = (itemId) => {
+    navigate(`/menu/${itemId}`);
+  };
   return (
     <div className="menu">
       <div className="menu-filters-container">
@@ -36,7 +41,11 @@ const Menu = () => {
       {error && <div>{error}</div>}
       {data &&
         (filteredMenu || data).map((item) => (
-          <MenuItem key={item.id} data={item} />
+          <MenuItem
+            key={item.id}
+            data={item}
+            goTo={() => goToDetails(item.id)}
+          />
         ))}
     </div>
   );

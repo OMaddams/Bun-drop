@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 function BurgerMenu() {
   return (
     <div className="burger-menu-container">
-      <Link to={"/"}>
-        <div className="burger-menu-item">Home</div>
-      </Link>
       <Link to={"/menu"}>
         <div className="burger-menu-item">Menu</div>
       </Link>

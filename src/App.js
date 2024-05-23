@@ -8,19 +8,23 @@ import Home from "./Pages/Home";
 import Menu from "./Pages/Menu";
 import Cart from "./Pages/Cart";
 import { useState, createContext, useContext } from "react";
-const CartContext = createContext(null);
+import MenuDetails from "./Pages/MenuDetails";
+import MobileCart from "./Components/MobileCart";
+export const CartContext = createContext();
 function App() {
   const [cart, setCart] = useState([]);
 
   return (
-    <CartContext.Provider value={cart}>
+    <CartContext.Provider value={{ cart, setCart }}>
       <Router>
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/menu" element={<Menu />} />
           <Route exact path="/cart" element={<Cart />} />
+          <Route path="/menu/:menuId" element={<MenuDetails />} />
         </Routes>
+        <MobileCart />
       </Router>
     </CartContext.Provider>
   );

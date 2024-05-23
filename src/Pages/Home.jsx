@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import LogoColor from "../Assets/logo-color.png";
+import LogoColor from "../Assets/Logo.png";
 import MenuItem from "../Components/MenuItem";
 import MobilebuttonLarge from "../Components/MobileButtonLarge";
 import { useFetch } from "../Hooks/useFetch";
@@ -29,7 +29,7 @@ const Home = () => {
         </div>
       </div>
       <div className="showcase-container">
-        <h2 className="h2-w">Our most popular options!</h2>
+        <h2 className="h2-w">Our most popular options</h2>
         <div className="showcase">
           {isPending && <div>Loading....</div>}
           {error && <div>{error}</div>}
