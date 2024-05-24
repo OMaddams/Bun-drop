@@ -5,10 +5,14 @@ import { getTotal } from "../Helpers/Helpers";
 import MobilebuttonLarge from "../Components/MobileButtonLarge";
 import { Link } from "react-router-dom";
 import Shipping from "../Components/Shipping";
+import Payment from "../Components/Payment";
 
 function Checkout() {
   const { cart, setCart } = useContext(CartContext);
-  let carty = cart;
+
+  function nextPayment() {
+    console.log(1);
+  }
   if (cart && cart.length > 0)
     return (
       <div className="checkout">
@@ -24,7 +28,8 @@ function Checkout() {
           <p>Total: {getTotal(cart)} :-</p>
         </div>
 
-        <Shipping></Shipping>
+        <Shipping next={nextPayment}></Shipping>
+        <Payment />
       </div>
     );
   else
