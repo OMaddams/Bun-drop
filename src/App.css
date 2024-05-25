@@ -24,7 +24,7 @@ p {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
 }
-label{
+label {
   font-family: "montserrat";
 }
 .text-center {
@@ -445,10 +445,16 @@ body {
 .checkout-list {
   margin: 15px 0;
 }
+.checkout-forms {
+  max-width: 720px;
+}
 .checkout-buttons {
   border: 1px solid white;
   background-color: rgba(1, 1, 1, 0);
   padding: 10px;
+}
+.checkout-buttons:disabled {
+  opacity: 0.5;
 }
 .shipping-container {
   display: flex;
@@ -463,6 +469,12 @@ body {
   height: 25px;
   text-align: center;
   font-size: 18px;
+}
+.validation-container {
+  margin: 10px 0;
+}
+.validation-text {
+  white-space: pre-wrap;
 }
 .shipping-inputs:focus {
   outline-style: none;

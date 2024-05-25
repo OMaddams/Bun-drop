@@ -11,11 +11,14 @@ function Payment() {
     );
   };
 
-  const onFocusOut = () => {};
+  const onFocusOut = (type) => {
+    if (type === "month") {
+    }
+  };
   let currentTime = new Date();
   const cardForm = () => {
     return (
-      <>
+      <div>
         <p>Card</p>
         <form id="payment" className="shipping-container">
           <label htmlFor="">Card number</label>
@@ -30,7 +33,7 @@ function Payment() {
             name=""
             id=""
             className="shipping-inputs"
-            onFocusOut={onFocusOut("month")}
+            onBlur={onFocusOut("month")}
           />
           <input
             className="shipping-inputs"
@@ -38,12 +41,12 @@ function Payment() {
             placeholder={currentTime.getFullYear()}
             min={currentTime.getFullYear()}
             max={currentTime.getFullYear() + 10}
-            onFocusOut={onFocusOut("month")}
+            onBlur={onFocusOut("month")}
             name=""
             id=""
           />
         </form>
-      </>
+      </div>
     );
   };
 

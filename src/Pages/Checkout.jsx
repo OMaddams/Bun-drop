@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../App";
 import MobileCartItem from "../Components/MobileCartItem";
 import { getTotal } from "../Helpers/Helpers";
@@ -9,9 +9,10 @@ import Payment from "../Components/Payment";
 
 function Checkout() {
   const { cart, setCart } = useContext(CartContext);
+  const [shipping, setShipping] = useState(null);
 
-  function nextPayment() {
-    console.log(1);
+  function shippingContinue(shippingDetails) {
+    setShipping(shippingDetails);
   }
   if (cart && cart.length > 0)
     return (
@@ -19,7 +20,7 @@ function Checkout() {
         <h1>Checkout</h1>
         <div className="checkout-list">
           {cart.map((item) => (
-            <p key={item.index}>
+            <p key={item.id}>
               {item.name} x {item.count}
             </p>
           ))}
@@ -27,9 +28,10 @@ function Checkout() {
         <div className="checkout-top">
           <p>Total: {getTotal(cart)} :-</p>
         </div>
-
-        <Shipping next={nextPayment}></Shipping>
-        <Payment />
+        <div className="checkout-forms">
+          {shipping === null && <Shipping next={shippingContinue} />}
+          {shipping && <Payment />}
+        </div>
       </div>
     );
   else
