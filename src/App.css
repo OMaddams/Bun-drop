@@ -487,3 +487,21 @@ body {
   gap: 15px;
   margin: 20px 0;
 }
+.payment-card-input {
+  display: flex;
+  flex-direction: column;
+  max-width: 40%;
+}
+.payment-card-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.payment-card-expiration {
+  max-width: 30%;
+  border: none;
+  border-bottom: 1px solid white;
+}
+.margin-15 {
+  margin: 15px;
+}
