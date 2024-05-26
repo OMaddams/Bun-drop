@@ -434,6 +434,7 @@ body {
 .checkout-top {
   padding: 15px 0;
   border-bottom: 1px solid white;
+  margin-bottom: 15px;
 }
 .checkout-bottom {
   display: flex;
@@ -459,7 +460,8 @@ body {
 .shipping-container {
   display: flex;
   flex-direction: column;
-  margin: 15px 0;
+  margin: 0 0 15px 0;
+  padding-top: 15px;
 }
 .shipping-inputs {
   border: 1px solid white;
@@ -485,7 +487,6 @@ body {
 .payment-selection {
   display: flex;
   gap: 15px;
-  margin: 20px 0;
 }
 .payment-card-input {
   display: flex;
@@ -504,4 +505,9 @@ body {
 }
 .margin-15 {
   margin: 15px;
+}
+
+.selected {
+  background-color: #181818;
+  border: none;
 }

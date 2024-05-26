@@ -7,6 +7,9 @@ function Payment() {
   const [cvc, setCvc] = useState("");
   const [month, setMonth] = useState();
   const [year, setYear] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
+  const [phonenumberError, setPhonenumberError] = useState("");
+  const [showContinue, setShowContinue] = useState(false);
   console.log(month);
   function cardNumOnChange(e) {
     let cardErrorText = "";
@@ -20,6 +23,7 @@ function Payment() {
     let tidyNum = e.target.value.replace(/\D/g, "");
     setCardNumError(cardErrorText);
     setCardNumber(tidyNum.trim());
+    shouldContinue();
   }
   function cvcOnChange(e) {
     let tidyNum = e.target.value.replace(/\D/g, "");
@@ -28,6 +32,7 @@ function Payment() {
       return;
     }
     setCvc(tidyNum.trim());
+    shouldContinue();
   }
   function monthOnChange(e) {
     let tidyNum = e.target.value.replace(/\D/g, "");
@@ -42,6 +47,13 @@ function Payment() {
     }
 
     preventExpired();
+    shouldContinue();
+  }
+  function validateYear(e) {
+    if (e.target.value < currentYearLastTwo) {
+      setYear(currentYearLastTwo);
+      setMonth(currentMonth);
+    }
   }
   function yearOnChange(e) {
     let tidyNum = e.target.value.replace(/\D/g, "");
@@ -52,6 +64,7 @@ function Payment() {
     } else {
       setYear(tidyNum);
     }
+    shouldContinue();
   }
   function preventExpired() {
     if (currentYearLastTwo > year) {
@@ -61,20 +74,64 @@ function Payment() {
       setMonth(currentMonth);
     }
   }
+  function phoneNumOnChange(e) {
+    let phoneNumError = "";
+    let tidyNum = e.target.value.replace(/\D/g, "");
+    let invalidStart = false;
+    if (tidyNum === "") {
+      setPhonenumber("");
+    } else if (tidyNum.length < 10) {
+      phoneNumError = "Not a valid phone number";
+    } else if (tidyNum.length > 10) {
+      return;
+    } else if (tidyNum[0] !== "0" || tidyNum[1] !== "7") {
+      phoneNumError = "Not a valid phone number";
+    }
+
+    setPhonenumberError(phoneNumError);
+    setPhonenumber(tidyNum);
+    shouldContinue();
+  }
+
+  function shouldContinue() {
+    let shouldContinue = false;
+    if (phonenumber.length === 10 && phonenumberError === "") {
+      shouldContinue = true;
+    }
+    if (
+      cardNumError === "" &&
+      cvc.length === 3 &&
+      month !== "" &&
+      year !== ""
+    ) {
+      shouldContinue = true;
+    }
+    setShowContinue(shouldContinue);
+  }
   const swishForm = () => {
     return (
-      <>
-        <p>Swish</p>
-      </>
+      <div>
+        <form id="payment" className="shipping-container selected">
+          <label htmlFor="">Phone number</label>
+          <input
+            type="text"
+            name=""
+            id=""
+            className="shipping-inputs"
+            value={phonenumber}
+            onChange={phoneNumOnChange}
+          />
+        </form>
+        <div className="validation-text">
+          <p className="validation-text">{phonenumberError}</p>
+        </div>
+        <div>
+          <button className="checkout-buttons">Pay</button>
+        </div>
+      </div>
     );
   };
 
-  const onFocusOut = (type) => {
-    if (type === "month") {
-    }
-    if (type === "year") {
-    }
-  };
   let currentTime = new Date();
   const currentYearLastTwo = currentTime.getFullYear() - 2000;
   const currentMonth = currentTime.getMonth() + 1;
@@ -82,8 +139,7 @@ function Payment() {
   const cardForm = () => {
     return (
       <div>
-        <p>Card</p>
-        <form id="payment" className="shipping-container">
+        <form id="payment" className={"shipping-container selected"}>
           <label htmlFor="">Card number</label>
           <input
             type="text"
@@ -118,7 +174,6 @@ function Payment() {
                   name=""
                   id=""
                   className="shipping-inputs payment-card-expiration"
-                  onBlur={onFocusOut("month")}
                 />
                 <p className="margin-15"> / </p>
                 <input
@@ -129,7 +184,7 @@ function Payment() {
                   placeholder={currentYearLastTwo}
                   min={currentYearLastTwo}
                   max={currentYearLastTwo + 10}
-                  onBlur={onFocusOut("year")}
+                  onBlur={validateYear}
                   name=""
                   id=""
                 />
@@ -139,8 +194,9 @@ function Payment() {
         </form>
         <div className="validation-text">
           <p className="validation-text">{cardNumError}</p>
-          <p className="validation-text">error</p>
-          <p className="validation-text">error</p>
+        </div>
+        <div>
+          <button className="checkout-buttons">Pay</button>
         </div>
       </div>
     );
@@ -151,14 +207,18 @@ function Payment() {
       <div className="payment-selection">
         <a href="#payment">
           <button
-            className="checkout-buttons"
+            className={`checkout-buttons ${
+              selectedMethod === "card" ? "selected" : ""
+            }`}
             onClick={() => setSelectedMethod("card")}
           >
             Card
           </button>
         </a>
         <button
-          className="checkout-buttons"
+          className={`checkout-buttons ${
+            selectedMethod === "swish" ? "selected" : ""
+          }`}
           onClick={() => setSelectedMethod("swish")}
         >
           Swish
