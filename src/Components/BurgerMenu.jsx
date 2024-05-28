@@ -9,7 +9,7 @@ function BurgerMenu() {
       <Link to={"/cart"}>
         <div className="burger-menu-item">Cart</div>
       </Link>
-      <Link>
+      <Link to={"/login"}>
         <div className="burger-menu-item">Sign in</div>
       </Link>
       <Link>

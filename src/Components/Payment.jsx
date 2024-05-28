@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Payment() {
+function Payment({ next }) {
   const [selectedMethod, setSelectedMethod] = useState();
   const [cardNumber, setCardNumber] = useState("");
   const [cardNumError, setCardNumError] = useState("");
@@ -23,7 +23,6 @@ function Payment() {
     let tidyNum = e.target.value.replace(/\D/g, "");
     setCardNumError(cardErrorText);
     setCardNumber(tidyNum.trim());
-    shouldContinue();
   }
   function cvcOnChange(e) {
     let tidyNum = e.target.value.replace(/\D/g, "");
@@ -32,7 +31,6 @@ function Payment() {
       return;
     }
     setCvc(tidyNum.trim());
-    shouldContinue();
   }
   function monthOnChange(e) {
     let tidyNum = e.target.value.replace(/\D/g, "");
@@ -47,7 +45,6 @@ function Payment() {
     }
 
     preventExpired();
-    shouldContinue();
   }
   function validateYear(e) {
     if (e.target.value < currentYearLastTwo) {
@@ -64,7 +61,6 @@ function Payment() {
     } else {
       setYear(tidyNum);
     }
-    shouldContinue();
   }
   function preventExpired() {
     if (currentYearLastTwo > year) {
@@ -90,28 +86,27 @@ function Payment() {
 
     setPhonenumberError(phoneNumError);
     setPhonenumber(tidyNum);
-    shouldContinue();
   }
 
-  function shouldContinue() {
-    let shouldContinue = false;
-    if (phonenumber.length === 10 && phonenumberError === "") {
-      shouldContinue = true;
+  function checkout() {
+    let paymentDetails = {};
+    if (selectedMethod === "card") {
+      paymentDetails = {
+        cardNumber: cardNumber,
+        cvc: cvc,
+        expiration: `${month}/${year}`,
+      };
+    } else if (selectedMethod === "swish") {
+      paymentDetails = {
+        phoneNumber: phonenumber,
+      };
     }
-    if (
-      cardNumError === "" &&
-      cvc.length === 3 &&
-      month !== "" &&
-      year !== ""
-    ) {
-      shouldContinue = true;
-    }
-    setShowContinue(shouldContinue);
+    next(paymentDetails);
   }
   const swishForm = () => {
     return (
       <div>
-        <form id="payment" className="shipping-container selected">
+        <form id="payment" className="shipping-container ">
           <label htmlFor="">Phone number</label>
           <input
             type="text"
@@ -126,7 +121,13 @@ function Payment() {
           <p className="validation-text">{phonenumberError}</p>
         </div>
         <div>
-          <button className="checkout-buttons">Pay</button>
+          <button
+            className="checkout-buttons"
+            disabled={phonenumberError !== "" || phonenumber == ""}
+            onClick={checkout}
+          >
+            Pay
+          </button>
         </div>
       </div>
     );
@@ -139,7 +140,7 @@ function Payment() {
   const cardForm = () => {
     return (
       <div>
-        <form id="payment" className={"shipping-container selected"}>
+        <form id="payment" className={"shipping-container "}>
           <label htmlFor="">Card number</label>
           <input
             type="text"
@@ -196,7 +197,18 @@ function Payment() {
           <p className="validation-text">{cardNumError}</p>
         </div>
         <div>
-          <button className="checkout-buttons">Pay</button>
+          <button
+            className="checkout-buttons"
+            disabled={
+              cardNumError !== "" ||
+              cvc.length !== 3 ||
+              month === "" ||
+              year === ""
+            }
+            onClick={checkout}
+          >
+            Pay
+          </button>
         </div>
       </div>
     );

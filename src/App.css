@@ -508,6 +508,6 @@ body {
 }
 
 .selected {
-  background-color: #181818;
   border: none;
+  border-bottom: solid 2px white;
 }

@@ -6,13 +6,17 @@ import MobilebuttonLarge from "../Components/MobileButtonLarge";
 import { Link } from "react-router-dom";
 import Shipping from "../Components/Shipping";
 import Payment from "../Components/Payment";
+import Confirmation from "../Components/Confirmation";
 
 function Checkout() {
   const { cart, setCart } = useContext(CartContext);
   const [shipping, setShipping] = useState(null);
-
+  const [payment, setPayment] = useState(null);
   function shippingContinue(shippingDetails) {
     setShipping(shippingDetails);
+  }
+  function paymentContinue(paymentDetails) {
+    setPayment(paymentDetails);
   }
   if (cart && cart.length > 0)
     return (
@@ -30,7 +34,8 @@ function Checkout() {
         </div>
         <div className="checkout-forms">
           {shipping === null && <Shipping next={shippingContinue} />}
-          {shipping && <Payment />}
+          {shipping && payment === null && <Payment next={paymentContinue} />}
+          {shipping && payment && <Confirmation />}
         </div>
       </div>
     );

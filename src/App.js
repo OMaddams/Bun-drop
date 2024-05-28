@@ -11,6 +11,7 @@ import Checkout from "./Pages/Checkout";
 import { useState, createContext, useContext } from "react";
 import MenuDetails from "./Pages/MenuDetails";
 import MobileCart from "./Components/MobileCart";
+import Login from "./Pages/Login";
 export const CartContext = createContext();
 function App() {
   const [cart, setCart] = useState([]);
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/checkout" element={<Checkout />} />
           <Route path="/menu/:menuId" element={<MenuDetails />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <MobileCart />
       </Router>
