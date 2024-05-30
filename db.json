@@ -68,7 +68,7 @@
   "users": [
     {
       "id": 1,
-      "username": "username",
+      "username": "user",
       "password": "password",
       "favourite": []
     },

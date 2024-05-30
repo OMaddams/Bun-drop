@@ -1,12 +1,14 @@
 import MobileButton from "../Components/MobileButton";
 import HamburgerMenu from "../Assets/hamburger-menu.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useFetch } from "../Hooks/useFetch";
 import MenuItem from "../Components/MenuItem";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../App";
 const Menu = () => {
   const [filteredMenu, setFilteredMenu] = useState(null);
   const [activeFilter, setActiveFilter] = useState(null);
+  const { signedInUser, setSignedInUser } = useContext(UserContext);
   const { data, isPending, error } = useFetch("http://localhost:3000/menu");
   const navigate = useNavigate();
   if (error) {
