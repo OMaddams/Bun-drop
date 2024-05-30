@@ -69,7 +69,20 @@
     {
       "id": 1,
       "username": "username",
-      "password": "password"
+      "password": "password",
+      "favourite": []
+    },
+    {
+      "id": "c470",
+      "username": "Test",
+      "password": "Password1",
+      "favourite": []
+    },
+    {
+      "id": "24cf",
+      "username": "Test1",
+      "password": "Password1",
+      "favourite": []
     }
   ]
 }
