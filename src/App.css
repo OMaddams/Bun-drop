@@ -395,7 +395,21 @@ body {
   flex-direction: column;
   gap: 10px;
 }
-
+.menu-details-favourite {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-70%);
+  background-color: #0c0c0c;
+  border-radius: 100%;
+  width: 64px;
+  height: 64px;
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #ffab91 solid 1px;
+}
 .add-button {
   border: 1px solid white;
   background-color: rgba(1, 1, 1, 0);

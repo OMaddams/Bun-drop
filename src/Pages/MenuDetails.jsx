@@ -1,21 +1,37 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../Hooks/useFetch";
 import { addToCart } from "../Helpers/Helpers";
 import { CartContext } from "../App";
 import MobileBack from "../Components/MobileBack";
+import { UserContext } from "../App";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
+import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 function MenuDetails() {
   const [menuItem, setMenuItem] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [count, setCount] = useState(1);
   const { menuId } = useParams();
   const { cart, setCart } = useContext(CartContext);
+  const { signedInUser, setSignedInUser } = useContext(UserContext);
+  const [currentUserFavourite, setCurrentUserFavourite] =
+    useState(faStarRegular);
+
   const { data, isPending, error } = useFetch(
     `http://localhost:3000/menu/${menuId}`
   );
   if (error) {
     console.log(error);
   }
+
+  useEffect(() => {
+    if (signedInUser && data) {
+      setCurrentUserFavourite(
+        signedInUser.favourite.includes(data.id) ? faStarSolid : faStarRegular
+      );
+    }
+  }, [data]);
 
   function handleChange(e) {
     let count = e.target.value;
@@ -37,6 +53,31 @@ function MenuDetails() {
     if (e.target.value == "") {
       e.target.value = 1;
     }
+  }
+
+  function patchFavourite(favourites) {
+    fetch(`http://localhost:3000/users/${signedInUser.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(favourites),
+    });
+  }
+
+  function handleFavourite() {
+    let currentUser = signedInUser;
+    const index = currentUser.favourite.findIndex((item) => item == data.id);
+    if (index === -1) {
+      currentUser.favourite.push(data.id);
+    } else {
+      currentUser.favourite.splice(index, 1);
+    }
+    setCurrentUserFavourite(
+      currentUser.favourite.includes(data.id) ? faStarSolid : faStarRegular
+    );
+    setSignedInUser(currentUser);
+    patchFavourite(currentUser);
   }
 
   function displayData() {
@@ -87,6 +128,11 @@ function MenuDetails() {
             <>{count * data.price} :-</>
           </form>
         </div>
+        {signedInUser && (
+          <div className="menu-details-favourite" onClick={handleFavourite}>
+            <FontAwesomeIcon icon={currentUserFavourite} />
+          </div>
+        )}
       </>
     );
   }
