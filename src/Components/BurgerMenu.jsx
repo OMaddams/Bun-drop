@@ -1,13 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
 
 function BurgerMenu() {
   const { signedInUser, setSignedInUser } = useContext(UserContext);
   const [currentUser, setCurrentUSer] = useState(signedInUser);
-
+  const nav = useNavigate();
   function signOut() {
     setCurrentUSer(null);
+    setSignedInUser(null);
+    nav("/");
   }
   useEffect(() => {
     setCurrentUSer(signedInUser);
