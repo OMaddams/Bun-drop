@@ -64,5 +64,25 @@
       "popularity": 1111
     }
   ],
-  "cart": []
+  "cart": [],
+  "users": [
+    {
+      "id": 1,
+      "username": "user",
+      "password": "password",
+      "favourite": []
+    },
+    {
+      "id": "c470",
+      "username": "Test",
+      "password": "Password1",
+      "favourite": []
+    },
+    {
+      "id": "24cf",
+      "username": "Test1",
+      "password": "Password1",
+      "favourite": []
+    }
+  ]
 }

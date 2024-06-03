@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-function MobileBack() {
+function MobileBack({ link, customIcon }) {
   return (
-    <Link to={"/menu"}>
+    <Link to={link || "/menu"}>
       <div className="mobile-back">
-        <FontAwesomeIcon icon={faArrowLeft} />
+        <FontAwesomeIcon icon={customIcon || faArrowLeft} />
       </div>
     </Link>
   );

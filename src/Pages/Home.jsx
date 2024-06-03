@@ -13,7 +13,7 @@ const Home = () => {
 
     let sortedMenu = data;
     sortedMenu.sort((a, b) => b.popularity - a.popularity);
-    console.log(sortedMenu);
+
     let topFive = sortedMenu.slice(0, 6);
     return topFive;
   }

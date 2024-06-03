@@ -42,8 +42,8 @@ function MenuItem({ data, goTo }) {
             type="text"
             inputMode="numeric"
             pattern="[0-9]*"
-            onChange={handleChange}
             min={1}
+            onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
           />

@@ -41,7 +41,7 @@ function MobileCart() {
             </div>
             <div style={{ marginBottom: "20%" }}>
               {cart && cart.length > 0 ? (
-                cart.map((item) => <MobileCartItem data={item} />)
+                cart.map((item) => <MobileCartItem key={item.id} data={item} />)
               ) : (
                 <></>
               )}
