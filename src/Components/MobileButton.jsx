@@ -1,6 +1,6 @@
-function MobileButton({ img, onClick, text }) {
+function MobileButton({ img, onClick, text, hidden }) {
   return (
-    <div className="mobile-button" onClick={onClick}>
+    <div className={`mobile-button ${hidden}`} onClick={onClick}>
       {img ? (
         <img className="mobile-button-img" src={img} />
       ) : (

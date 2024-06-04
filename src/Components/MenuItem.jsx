@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import { addToCart } from "../Helpers/Helpers";
 import { CartContext } from "../App";
-
+import { WindowContext } from "../App";
 function MenuItem({ data, goTo }) {
   const [clicked, setClicked] = useState(false);
+
   const [count, setCount] = useState(1);
   const { cart, setCart } = useContext(CartContext);
   function toggleClicked() {
@@ -30,6 +31,7 @@ function MenuItem({ data, goTo }) {
       e.target.value = 1;
     }
   }
+
   if (clicked) {
     return (
       <div className="menu-item">

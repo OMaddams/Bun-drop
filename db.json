@@ -70,7 +70,12 @@
       "id": "1",
       "username": "user",
       "password": "password",
-      "favourite": ["1", "4"]
+      "favourite": [
+        "4",
+        "2",
+        "1",
+        "5"
+      ]
     },
     {
       "id": "c470",

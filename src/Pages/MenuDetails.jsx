@@ -8,6 +8,7 @@ import { UserContext } from "../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
+import MobileCart from "../Components/MobileCart";
 function MenuDetails() {
   const [menuItem, setMenuItem] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -57,7 +58,7 @@ function MenuDetails() {
 
   function patchFavourite(favourites) {
     fetch(`http://localhost:3000/users/${signedInUser.id}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -101,38 +102,27 @@ function MenuDetails() {
             alignItems: "center",
           }}
         >
-          <form
-            onSubmit={handleSumbit}
-            style={{
-              width: "60%",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <label># </label>
-            <input
-              value={count}
-              className="add-number"
-              type="text"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              min={1}
-              onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-            />
+          <form onSubmit={handleSumbit} className="menu-details-add ">
+            <div>
+              <label># </label>
+              <input
+                value={count}
+                className="add-number"
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                min={1}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+              />
+            </div>
             <button className="add-button">
               <>Add</>
             </button>
             <>{count * data.price} :-</>
           </form>
         </div>
-        {signedInUser && (
-          <div className="menu-details-favourite" onClick={handleFavourite}>
-            <FontAwesomeIcon icon={currentUserFavourite} />
-          </div>
-        )}
       </>
     );
   }
@@ -143,9 +133,16 @@ function MenuDetails() {
         {isPending && <div>Loading....</div>}
         {error && <div>{error}</div>}
         {data && displayData()}
-        <MobileBack />
+        <div className="menu-details-buttons">
+          <MobileBack />
+          {signedInUser && (
+            <div className="menu-details-favourite" onClick={handleFavourite}>
+              <FontAwesomeIcon icon={currentUserFavourite} />
+            </div>
+          )}
+          {/* <MobileCart /> */}
+        </div>
       </div>
-      <MobileBack style={{ left: "0" }} />
     </>
   );
 }
