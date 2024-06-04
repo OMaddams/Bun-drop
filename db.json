@@ -67,10 +67,15 @@
   "cart": [],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "user",
       "password": "password",
-      "favourite": []
+      "favourite": [
+        "4",
+        "2",
+        "1",
+        "5"
+      ]
     },
     {
       "id": "c470",

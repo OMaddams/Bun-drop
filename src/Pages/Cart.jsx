@@ -23,7 +23,7 @@ function Cart() {
           </Link>
         </div>
       ) : (
-        <MobilebuttonLarge text={"Back to the menu!"} />
+        <MobilebuttonLarge text={"Back to the menu!"} route={"/menu"} />
       )}
     </div>
   );

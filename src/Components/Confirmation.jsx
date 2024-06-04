@@ -15,6 +15,7 @@ function Confirmation() {
   }
   return (
     <>
+      <p>Thank you for your purchase!</p>
       <p>{timeRemaining}</p>
     </>
   );

@@ -26,7 +26,7 @@ function MobileCart() {
       <div>
         {expanded ? (
           <div className="mobile-cart-expanded">
-            <button className="mobile-cart" onClick={checkout}>
+            <button className="mobile-cart mobile-cart-pay " onClick={checkout}>
               <FontAwesomeIcon style={{ width: "1em" }} icon={faCreditCard} />
             </button>
             <div className="mobile-cart-top">
